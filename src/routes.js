@@ -7,8 +7,7 @@ import RTLPage from "views/Dashboard/RTL";
 import Profile from "views/Dashboard/Profile";
 import SignIn from "views/Auth/SignIn.js";
 import SignUp from "views/Auth/SignUp.js";
-import Landing from "views/home/Landing";
-
+import  {ChatBot}  from "views/Dashboard/Chatbot.js";
 import {
   HomeIcon,
   StatsIcon,
@@ -26,6 +25,15 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: <HomeIcon color="inherit" />,
     component: Dashboard,
+    layout: "/admin",
+  },
+  {
+    path: "/chatbot",
+    name: "Chat Bot",
+    rtlName: "لوحة القيادة",
+    icon: <RocketIcon color="inherit" />,
+    secondaryNavbar: true,
+    component: ChatBot,
     layout: "/admin",
   },
   {
@@ -53,6 +61,14 @@ var dashRoutes = [
     layout: "/rtl",
   },
   {
+    path: "/signin",
+    name: "Log In",
+    rtlName: "لوحة القيادة",
+    icon: <DocumentIcon color="inherit" />,
+    component: SignIn,
+    layout: "/auth",
+  },
+  {
     name: "ACCOUNT PAGES",
     category: "account",
     rtlName: "صفحات",
@@ -67,14 +83,8 @@ var dashRoutes = [
         component: Profile,
         layout: "/admin",
       },
-      {
-        path: "/signin",
-        name: "Log In",
-        rtlName: "لوحة القيادة",
-        icon: <DocumentIcon color="inherit" />,
-        component: SignIn,
-        layout: "/auth",
-      },
+  
+    
       {
         path: "/signup",
         name: "Sign Up",
@@ -83,15 +93,10 @@ var dashRoutes = [
         secondaryNavbar: true,
         component: SignUp,
         layout: "/auth",
-      },   {
-        path: "/landing",
-        name: "Sign Up",
-        rtlName: "لوحة القيادة",
-        icon: <RocketIcon color="inherit" />,
-        secondaryNavbar: true,
-        component: Landing,
-        layout: "/auth",
-      },
+      }, 
+
+  
+    
     ],
   },
 ];

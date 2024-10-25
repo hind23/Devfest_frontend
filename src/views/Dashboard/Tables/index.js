@@ -21,7 +21,7 @@ function Tables() {
         />
       </Flex>
       <Box w={"100%"} marginTop={"50px"} py={"8px"} bgColor={"white"}>
-  <Flex flexDirection={"row"} alignItems={"center"} w={"100%"} justifyContent={"space-between"}>
+  <Flex p={"10px"} rounded={"lg"}  flexDirection={"row"} alignItems={"center"} w={"100%"} justifyContent={"space-between"}>
     <Heading>
       Expense type
     </Heading>
@@ -102,7 +102,8 @@ Date
 </Flex>
 
 
-</Text><Text color="#041039">
+</Text>
+<Text color="#041039">
   <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
 <Text w={"50%"}>
 Title
@@ -116,7 +117,8 @@ Date
 </Flex>
 
 
-</Text><Text color="#041039">
+</Text>
+<Text color="#041039">
   <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
 <Text w={"50%"}>
 Title
@@ -128,7 +130,8 @@ Category
 Date
  </Text> 
 </Flex>
-</Text><Text color="#041039">
+</Text>
+<Text color="#041039">
   <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
 <Text w={"50%"}>
 Title
@@ -140,7 +143,8 @@ Category
 Date
  </Text> 
 </Flex>
-</Text><Text color="#041039">
+</Text>
+<Text color="#041039">
   <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
 <Text w={"50%"}>
 Title
@@ -152,7 +156,8 @@ Category
 Date
  </Text> 
 </Flex>
-</Text><Text color="#041039">
+</Text>
+<Text color="#041039">
   <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
 <Text w={"50%"}>
 Title

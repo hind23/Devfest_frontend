@@ -1,5 +1,4 @@
 
-
 import React from "react";
 import { NavLink } from "react-router-dom";
 import AuthNavbar from "components/Navbars/AuthNavbar";
@@ -275,7 +274,11 @@ Expense tracking        </Heading>
    
         {/* Main Heading */}
         <Heading as="h2" size="lg">
-Forecast and recommendations       </Heading>
+          <Text>
+        Forecast and     
+          </Text>
+          <Text>
+Recommendations          </Text>       </Heading>
       </Flex>
 
       {/* Description Text */}

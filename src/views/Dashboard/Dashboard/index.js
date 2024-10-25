@@ -3,14 +3,23 @@ import {
   Flex,
   Grid,
   Image,
-  SimpleGrid,
-  useColorModeValue,
+  Box,Text,
+  SimpleGrid,Divider ,Icon,
+  useColorModeValue,Progress
 } from "@chakra-ui/react";
+import { LineChart as MuiLineChart } from '@mui/x-charts/LineChart'; // Renamed import to avoid conflict
+
 // assets
+import LineChart2 from "components/Charts/LineChart2";
+import LineChart from "components/Charts/LineChart";
 import peopleImage from "assets/img/people-image.png";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import logoChakra from "assets/svg/logo-white.svg";
 import BarChart from "components/Charts/BarChart";
-import LineChart from "components/Charts/LineChart";
+import cashFlow from "assets/svg/CashFlow.svg"
+import expenses from "assets/svg/expanses.svg"
+import revenue from "assets/svg/revenue.svg"
+import profits from "assets/svg/profits.svg"
 // Custom icons
 import {
   CartIcon,
@@ -21,19 +30,43 @@ import {
 import React from "react";
 import { dashboardTableData, timelineData } from "variables/general";
 import ActiveUsers from "./components/ActiveUsers";
-import BuiltByDevelopers from "./components/BuiltByDevelopers";
 import MiniStatistics from "./components/MiniStatistics";
-import OrdersOverview from "./components/OrdersOverview";
-import Projects from "./components/Projects";
 import SalesOverview from "./components/SalesOverview";
-import WorkWithTheRockets from "./components/WorkWithTheRockets";
-
+const TransactionItem = ({ title, date, amount, color, icon }) => (
+  <Flex justifyContent="space-between" alignItems="center" mb={3}>
+    <Flex alignItems="center">
+      <Icon as={icon} color={color} boxSize={4} mr={2} />
+      <Box>
+        <Text fontWeight={"semibold"}>{title}</Text>
+        <Text fontSize="xs" color="#A0AEC0">{date}</Text>
+      </Box>
+    </Flex>
+    <Text fontWeight={"semibold"} color={color}>{amount}$</Text>
+  </Flex>
+);
 export default function Dashboard() {
+  const getProfits=()=>
+    {
+      return 2400 ;
+    } 
+  const getExpenses=()=>
+      {
+        return 2400 ;
+      }
+      const getRevenue=()=>
+        {
+          return 2400 ;
+        }  
+      const getCashFlow=()=>
+          {
+            return 2400 ;
+          }
+
   const iconBoxInside = useColorModeValue("white", "white");
 
   return (
     <Flex flexDirection='column' pt={{ base: "120px", md: "75px" }}>
-      <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing='24px'>
+      <SimpleGrid marginBottom={"16px"} columns={{ sm: 1, md: 2, xl: 4 }} spacing='24px'>
         <MiniStatistics
           title={"Today's Moneys"}
           amount={"$53,000"}
@@ -76,12 +109,155 @@ export default function Dashboard() {
           chart={<LineChart />}
         />
       </Grid>
+  
+    
       <Grid
-        templateColumns={{ sm: "1fr", md: "1fr 1fr", lg: "2fr 1fr" }}
-        templateRows={{ sm: "1fr auto", md: "1fr", lg: "1fr" }}
-        gap='24px'>
+        templateColumns={{ sm: "1fr", lg: "1.3fr 1.7fr" }}
+        templateRows={{ sm: "repeat(2, 1fr)", lg: "1fr" }}
+        gap='24px'
+        mb={{ lg: "26px" }}>
+        <Grid>
+        <Flex
+        backgroundColor={'white'}
+      h="100px"
+      justifyContent="space-between"
+      alignItems="center"
+      p="15px"
+      rounded="lg"
+      shadow="md"
+    >
+      {/* Cash Flow Card */}
+      <Box
+        textAlign="center"
+      >
+        <Flex alignItems="center" justifyContent="space-between" mb="10px">
+          <Image  src={cashFlow} alt="Cash Flow" mr="8px" />
+          <Text fontSize="sm" fontWeight="bold" color="#A0AEC0">
+            Cash Flow
+          </Text>
+        </Flex>
+        <Text fontSize="lg" fontWeight="bold" mb="5px">
+        {getCashFlow()}$
+        </Text>
+        {/* #4FD1C5 */}
+      </Box>
+
+      {/* Profits Card */}
+      <Box
+        
+        textAlign="center"
+      >
+        <Flex alignItems="center" justifyContent="center" mb="10px">
+          <Image src={profits} alt="Profits" mr="8px" />
+          <Text fontSize="sm" fontWeight="bold" color="#A0AEC0">
+            Profits
+          </Text>
+        </Flex>
+        <Text fontSize="lg" fontWeight="bold" mb="5px">
+          2,400$
+        </Text>
+        
+
+      </Box>
+
+      {/* Expenses Card */}
+      <Box
+
+        textAlign="center"
+      >
+        <Flex alignItems="center" justifyContent="center" mb="10px">
+          <Image  src={expenses} alt="Expenses" mr="8px" />
+          <Text fontSize="sm" fontWeight="bold" color="#A0AEC0">
+            Expenses
+          </Text>
+        </Flex>
+        <Text fontSize="lg" fontWeight="bold" mb="5px">
+          2,400$
+        </Text>
+       
+      </Box>
+
+      {/* Revenue Card */}
+      <Box
+        textAlign="center"
+      >
+        <Flex alignItems="center" justifyContent="center" mb="10px">
+          <Image  src={revenue} alt="Revenue" mr="8px" />
+          <Text fontSize="sm" fontWeight="bold" color="#A0AEC0">
+            Revenue
+          </Text>
+        </Flex>
+        <Text fontSize="lg" fontWeight="bold" mb="5px">
+          2,400$
+        </Text>
       
-      
+      </Box>
+
+    </Flex>
+
+       <Box id="remaining" h={"300px"} 
+         p="15px"
+      rounded="lg"
+      shadow="md"
+      mb={"auto"}
+       backgroundColor={"white"} boxShadow={"md"}>
+
+        </Box> 
+
+        </Grid>
+        <Box rounded={"md"} backgroundColor={"white"} p={5}>
+      {/* Transactions Header */}
+      <Flex justifyContent="space-between" alignItems="center" mb={5}>
+        <Text fontSize="lg" fontWeight="bold">Transactions</Text>
+        <Text color="gray.500" fontSize="sm">23 - 30 March 2020</Text>
+      </Flex>
+
+      {/* Newest Label */}
+      <Text fontSize="xs" fontWeight="bold" color="#A0AEC0" mb={3}>NEWEST</Text>
+
+      {/* Transaction Items */}
+      <TransactionItem
+        title="Budget Allocation"
+        date="27 March 2020, at 12:30 PM"
+        amount="-2500"
+        color="red.500"
+        icon={FaArrowDown}
+      />
+      <TransactionItem
+        title="Financial Report"
+        date="27 March 2020, at 12:30 PM"
+        amount="+2500"
+        color="green.500"
+        icon={FaArrowUp}
+      />
+
+      <Divider my={4} />
+
+      {/* Yesterday Label */}
+      <Text fontSize="xs" fontWeight="bold" color="#A0AEC0" mb={3}>YESTERDAY</Text>
+
+      <TransactionItem
+        title="Banking"
+        date="26 March 2020, at 13:45 PM"
+        amount="+800"
+        color="green.500"
+        icon={FaArrowUp}
+      />
+      <TransactionItem
+        title="Financial Services"
+        date="26 March 2020, at 12:30 PM"
+        amount="+1700"
+        color="green.500"
+        icon={FaArrowUp}
+      />
+      <TransactionItem
+        title="Finance"
+        date="25 March 2020, at 16:30 PM"
+        amount="-987"
+        color="red.500"
+        icon={FaArrowDown}
+      />
+    </Box>
       </Grid>
     </Flex>
   );

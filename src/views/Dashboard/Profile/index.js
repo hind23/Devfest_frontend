@@ -2,14 +2,18 @@
 import { Flex, Grid, useColorModeValue } from "@chakra-ui/react";
 import avatar4 from "assets/img/avatars/avatar4.png";
 import ProfileBgImage from "assets/img/ProfileBackground.png";
-import React from "react";
-import { FaCube, FaPenFancy } from "react-icons/fa";
-import { IoDocumentsSharp } from "react-icons/io5";
-import Conversations from "./components/Conversations";
-import Header from "./components/Header";
-import PlatformSettings from "./components/PlatformSettings";
-import ProfileInformation from "./components/ProfileInformation";
-import Projects from "./components/Projects";
+import {
+  Box,
+  Button,
+  Divider,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Stack,
+  Switch,
+  Text,
+} from "@chakra-ui/react";
 
 function Profile() {
   // Chakra color mode
@@ -20,8 +24,90 @@ function Profile() {
   );
 
   return (
-    <Flex direction='column'>
-    
+    <Flex direction="column" align="center" justify="center" p={8} >
+      <Box
+        w="full"
+        maxW="700px"
+        p={8}
+        bg="white"
+        borderRadius="lg"
+        boxShadow="md"
+      >
+        {/* Profile Header */}
+        <Heading mb={3} color={"#2D3748"} as="h2" size="lg" >
+          BENDAHMANE Nesrine
+        </Heading>
+        <Text fontSize={"18px"} mb={3} fontWeight={"bold"} >Company name</Text>
+        <Text fontSize={"14px"} color={"#142E15"} mb={6}>Email@gmail.com</Text>
+        <Divider orientation="horizontal" />
+
+        {/* Privacy Settings */}
+        <Heading as="h3" size="md" mt={6} mb={4}>
+          Privacy Settings
+        </Heading>
+        <Stack spacing={4} mb={6}>
+          <FormControl display="flex" alignItems="center">
+            <FormLabel htmlFor="two-factor" mb="0">
+              Two-Factor Authentication
+            </FormLabel>
+            <Switch id="two-factor" display={"block"} marginLeft={"auto"} />
+          </FormControl>
+
+          <FormControl display="flex" alignItems="center">
+            <FormLabel htmlFor="email-notifications" mb="0">
+              Email Notifications
+            </FormLabel>
+            <Switch display={"block"} marginLeft={"auto"} id="email-notifications" defaultChecked />
+          </FormControl>
+
+          <FormControl display="flex" alignItems="center">
+            <FormLabel htmlFor="transaction-alerts" mb="0">
+              Transaction Alerts
+            </FormLabel>
+            <Switch display={"block"} marginLeft={"auto"} id="transaction-alerts" defaultChecked />
+          </FormControl>
+        </Stack>
+
+        <Divider mb={6} />
+
+        {/* Personal Information */}
+        <Heading as="h3" size="md" mb={4}>
+          Personal Information
+        </Heading>
+
+        {/* Change Password Form */}
+        <Stack spacing={4}>
+          <FormControl>
+            <FormLabel>Old Password</FormLabel>
+            <Input w={"50%"} type="password" placeholder="your password" />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel>New Password</FormLabel>
+            <Input py={4} w={"50%"} type="password" placeholder="your new password" />
+          </FormControl>
+<Flex>
+<FormControl>
+            <FormLabel>Confirm Password</FormLabel>
+            <Input w={"50%"} type="password" placeholder="confirm password" />
+          </FormControl>
+          <Button
+          mt={6}
+          colorScheme="teal"
+          size="lg"
+          w="full"
+          bg="gray.500"
+          _hover={{ bg: "gray.600" }}
+        >
+          Save
+        </Button>
+  </Flex>
+
+        </Stack>
+
+        {/* Save Button */}
+      
+      </Box>
     </Flex>
   );
 }
