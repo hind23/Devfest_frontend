@@ -86,8 +86,8 @@ function Profile() {
             <FormLabel>New Password</FormLabel>
             <Input py={4} w={"50%"} type="password" placeholder="your new password" />
           </FormControl>
-<Flex>
-<FormControl>
+<Flex w={"100%"}>
+<FormControl >
             <FormLabel>Confirm Password</FormLabel>
             <Input w={"50%"} type="password" placeholder="confirm password" />
           </FormControl>
@@ -95,7 +95,7 @@ function Profile() {
           mt={6}
           colorScheme="teal"
           size="lg"
-          w="full"
+          w="50%"
           bg="gray.500"
           _hover={{ bg: "gray.600" }}
         >

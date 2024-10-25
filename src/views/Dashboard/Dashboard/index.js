@@ -5,16 +5,12 @@ import {
   Image,
   Box,Text,
   SimpleGrid,Divider ,Icon,
-  useColorModeValue,Progress
+  useColorModeValue
 } from "@chakra-ui/react";
-import { LineChart as MuiLineChart } from '@mui/x-charts/LineChart'; // Renamed import to avoid conflict
 
 // assets
-import LineChart2 from "components/Charts/LineChart2";
 import LineChart from "components/Charts/LineChart";
-import peopleImage from "assets/img/people-image.png";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-import logoChakra from "assets/svg/logo-white.svg";
 import BarChart from "components/Charts/BarChart";
 import cashFlow from "assets/svg/CashFlow.svg"
 import expenses from "assets/svg/expanses.svg"
@@ -28,10 +24,10 @@ import {
   WalletIcon,
 } from "components/Icons/Icons.js";
 import React from "react";
-import { dashboardTableData, timelineData } from "variables/general";
 import ActiveUsers from "./components/ActiveUsers";
 import MiniStatistics from "./components/MiniStatistics";
 import SalesOverview from "./components/SalesOverview";
+import GraphOfTrends from "../../../assets/svg/GraphOfTrends.svg";
 const TransactionItem = ({ title, date, amount, color, icon }) => (
   <Flex justifyContent="space-between" alignItems="center" mb={3}>
     <Flex alignItems="center">
@@ -201,7 +197,7 @@ export default function Dashboard() {
       shadow="md"
       mb={"auto"}
        backgroundColor={"white"} boxShadow={"md"}>
-
+<Image  src={GraphOfTrends}/>
         </Box> 
 
         </Grid>

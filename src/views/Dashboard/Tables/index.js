@@ -1,10 +1,12 @@
 // Chakra imports
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading,Image } from "@chakra-ui/react";
 import React from "react";
 import SalesOverview from "../Dashboard/components/SalesOverview";
 import { Box ,Spacer,Text} from "@chakra-ui/react";
 import LineChart from "components/Charts/LineChart";
 import { Button } from "@chakra-ui/react";
+import pieChart from "assets/svg/pieChart.svg";
+
 function Tables() {
   return (
     <Flex direction='column'  pt={{ base: "120px", md: "75px" }}>
@@ -12,7 +14,8 @@ function Tables() {
          <Flex p={"5px"} justifyContent={"center"}  flexDirection={"column"} bgColor={"white"} w={"40%"}>
          <Heading color={"#2D3748"} textAlign={"center"}>
             Category Summary         </Heading>
-        </Flex>
+            <Image src={pieChart} alt={"pieChart"} />
+            </Flex>
         <Spacer/>
         <SalesOverview w={"55%"}
           title={"Profits overview"}

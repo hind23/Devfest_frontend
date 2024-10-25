@@ -52,14 +52,7 @@ var dashRoutes = [
     component: Billing,
     layout: "/admin",
   },
-  {
-    path: "/rtl-support-page",
-    name: "RTL",
-    rtlName: "آرتيإل",
-    icon: <SupportIcon color="inherit" />,
-    component: RTLPage,
-    layout: "/rtl",
-  },
+
   {
     path: "/signin",
     name: "Log In",

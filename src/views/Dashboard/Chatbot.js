@@ -10,28 +10,41 @@ import {
     List,
     ListItem,
     IconButton,
+Heading
   } from "@chakra-ui/react";
   import { FaPaperPlane, FaPaperclip, FaTimesCircle } from "react-icons/fa";
   import { useState, useRef } from "react";
-  import ChatBotImg from "../../assets/svg/chatBot.svg"; // Ensure this path is correct
+  import ChatBotImg from "../../assets/svg/BBT.svg"; // Ensure this path is correct
+import Header from "./Profile/components/Header";
   
   export const ChatBot = () => {
     const [selectedFiles, setSelectedFiles] = useState([]); // State to store selected files
     const [messages, setMessages] = useState([]); // State to store chat messages
     const fileInputRef = useRef(null);
-    const [position, setPosition] = useState("block");
     const [isExpanded, setIsExpanded] = useState(false); // Track if the input area is expanded
+    const [visible,setVisible]=useState(true);
+    // Function to simulate backend response for now
+    const getResponse = (question) => {
+      // You could replace this with dynamic responses later
+      return `Response forResponse forResponse forResponse forResponse forResponse forResponse forResponse forResponse for "${question}"`;
+    };
   
     const handleAskChatBot = () => {
-      const inputField = document.getElementById("chat-input"); // Get the input field by ID
-      const message = inputField.value.trim(); // Get the trimmed message from the input field
+        setVisible(false);
+      const inputField = document.getElementById("chat-input");
+      const question = inputField.value; 
   
-      if (message) {
-        setMessages((prevMessages) => [...prevMessages, message]); // Add new message to messages array
+      if (question) {
+        // Render question in the messages array
+        setMessages((prevMessages) => [...prevMessages, { text: question, sender: "user" }]);
         inputField.value = ""; // Clear the input field
+  
+        setTimeout(() => {
+          const answer = getResponse(question);
+          setMessages((prevMessages) => [...prevMessages, { text: answer, sender: "bot" }]);
+        }, 800); // Delay to simulate response time
       }
   
-      setPosition("absolute");
       setIsExpanded(true); // Set expanded state to true
     };
   
@@ -43,7 +56,6 @@ import {
   
     const handleFileChange = (event) => {
       const files = Array.from(event.target.files);
-      console.log(files);
       setSelectedFiles((prevFiles) => [...prevFiles, ...files]); // Add new files to the current selection
     };
   
@@ -52,14 +64,13 @@ import {
     };
   
     return (
-      <Container maxW="sm" centerContent>
-        <VStack  spacing={6} align="center" mt={10}>
+      <Container minH={"80vh"} maxW="sm" centerContent>
+        <VStack spacing={6} align="center" mt={10}>
           <Image src={ChatBotImg} alt="Chatbot Icon" boxSize="50px" />
           <Text color={"#041039"} fontSize="lg" fontWeight="bold" textAlign="center">
             Empower Your Finances, Secure Your Future.
           </Text>
           <HStack spacing={2}>
-            {/* Repeatable buttons for demonstration */}
             {[...Array(3)].map((_, index) => (
               <Button
                 key={index}
@@ -72,23 +83,38 @@ import {
                 variant="outline"
                 px={4}
                 py={4}
+                display={visible?"block":"none"}
+                onClick={() => handleAskChatBot("What is our current cash flow?")}
               >
                 What is our current cash flow?
               </Button>
             ))}
           </HStack>
-  
-          <Box
-            position={isExpanded ? "absolute" : "relative"} // Use position based on expanded state
-            bottom={isExpanded ? "20px" : "0"}
+
+          <Box minH={"fit-content"}
+            position={isExpanded ? "absolute" : "relative"}
+            bottom={isExpanded ? "10px" : ""}
             w={isExpanded ? "80%" : "100%"}
-            transition="all 0.3s ease" // Add smooth transition
+            transition="all 0.3s ease"
           >
             <HStack spacing={3} mt={4}>
               <Button onClick={handleAttachFiles} variant="ghost" colorScheme="teal" color={"#4FD1C5"} size="lg">
                 <FaPaperclip />
               </Button>
-              <Input id="chat-input" variant="outline" placeholder="Type a message..." size="lg" />
+              <Input
+  mt={"40px"}
+ 
+  id="chat-input"
+  variant="outline"
+  placeholder="Type a message..."
+ 
+  onKeyDown={(e) => {
+    if (e.key === "Enter") {
+      handleAskChatBot();
+    }
+  }}
+/>
+
               <Button onClick={handleAskChatBot} backgroundColor={"#4FD1C5"} colorScheme="teal" size="lg">
                 <FaPaperPlane />
               </Button>
@@ -96,24 +122,26 @@ import {
           </Box>
   
           {/* Messages display area */}
-          <Box w="full" mt={4} overflowY="auto" maxH="300px">
-  {messages.map((message, index) => (
-    <Box
-      key={index}
-      textAlign="left"
-      mb={2}
-      p={2}
-      borderBottomRightRadius="0px"
-      borderRadius="md"
-      bg="white"
-      maxW="70%" // Set maximum width for the message
-      alignSelf="flex-start" // Align message to the left
-    >
-      <Text w={"40vw"}>{message}</Text>
-    </Box>
-  ))}
-</Box>
-
+          <Box w="full" mt={4} >
+            {messages.map((message, index) => (
+              <Box
+                key={index}
+                textAlign={message.sender === "user" ? "left" : "right"}
+                mb={2}
+                p={2}
+                borderBottomRightRadius={message.sender === "user" ? "0" : "md"}
+                borderRadius="md"
+                bg={message.sender === "user" ? "gray.100" : "teal.100"}
+                maxW={"100%"}
+                alignSelf={message.sender === "user" ? "flex-start" : "flex-end"}
+              >
+                <Heading mb={"10px"} fontSize={"20px"}>
+                    {message.sender === "user" ? "You" : "Chatbot"}
+                </Heading>
+                <Text>{message.text}</Text>
+              </Box>
+            ))}
+          </Box>
   
           {selectedFiles.length > 0 && (
             <Box mt={4} w="full">
@@ -142,11 +170,11 @@ import {
             type="file"
             ref={fileInputRef}
             onChange={handleFileChange}
-            style={{ display: "none" }} // Hide the file input
-            multiple // Allow selecting multiple files
+            style={{ display: "none" }}
+            multiple
           />
         </VStack>
       </Container>
     );
   };
-  
+   
