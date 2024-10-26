@@ -1,12 +1,13 @@
 /*eslint-disable*/
 // chakra imports
 import {
-    Box,
-    Button, Flex,
-    Link,
-    Stack,
-    Text,
-    useColorModeValue
+  Box,
+  Button,
+  Flex,
+  Link,
+  Stack,
+  Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import IconBox from "components/Icons/IconBox";
 import { CreativeTimLogo } from "components/Icons/Icons";
@@ -17,10 +18,8 @@ import { NavLink, useLocation } from "react-router-dom";
 
 // this function creates the links and collapses that appear in the sidebar (left menu)
 
-
 const SidebarContent = ({ logoText, routes }) => {
-
-    // to check for active links and opened collapses
+  // to check for active links and opened collapses
   let location = useLocation();
   // this is for the rest of the collapses
   const [state, setState] = React.useState({});
@@ -29,6 +28,18 @@ const SidebarContent = ({ logoText, routes }) => {
   const activeRoute = (routeName) => {
     return location.pathname === routeName ? "active" : "";
   };
+
+  // Filter routes
+  const filteredRoutes = routes.filter((route) =>
+    ["/dashboard", "/tables", "/chatbot", "/billing"].includes(route.path)
+  );
+
+  const accountRoutes = routes
+    .find((route) => route.category === "account")
+    .views.filter((view) =>
+      ["/profile", "/logout"].includes(view.path)
+    );
+
   const createLinks = (routes) => {
     // Chakra Color Mode
     const activeBg = useColorModeValue("white", "gray.700");
@@ -174,35 +185,55 @@ const SidebarContent = ({ logoText, routes }) => {
     });
   };
 
-    const links = <>{createLinks(routes)}</>;
+  const links = (
+    <>
+      {createLinks(filteredRoutes)}
+      <Text
+        color={useColorModeValue("gray.700", "white")}
+        fontWeight="bold"
+        mb={{
+          xl: "12px",
+        }}
+        mx="auto"
+        ps={{
+          sm: "10px",
+          xl: "16px",
+        }}
+        py="12px"
+      >
+        ACCOUNT PAGES
+      </Text>
+      {createLinks(accountRoutes)}
+    </>
+  );
 
   return (
     <>
-        <Box pt={"25px"} mb="12px">
-      <Link
-        href={`${process.env.PUBLIC_URL}/#/`}
-        target="_blank"
-        display="flex"
-        lineHeight="100%"
-        mb="30px"
-        fontWeight="bold"
-        justifyContent="center"
-        alignItems="center"
-        fontSize="11px"
-      >
-        <CreativeTimLogo w="32px" h="32px" me="10px" />
-        <Text fontSize="sm" mt="3px">
-          {logoText}
-        </Text>
-      </Link>
-      <Separator></Separator>
-    </Box>
-          <Stack direction="column" mb="40px">
-            <Box>{links}</Box>
-          </Stack>
-          <SidebarHelp />
+      <Box pt={"25px"} mb="12px">
+        <Link
+          href={`${process.env.PUBLIC_URL}/#/`}
+          target="_blank"
+          display="flex"
+          lineHeight="100%"
+          mb="30px"
+          fontWeight="bold"
+          justifyContent="center"
+          alignItems="center"
+          fontSize="11px"
+        >
+          <CreativeTimLogo w="32px" h="32px" me="10px" />
+          <Text fontSize="sm" mt="3px">
+            {logoText}
+          </Text>
+        </Link>
+        <Separator></Separator>
+      </Box>
+      <Stack direction="column" mb="40px">
+        <Box>{links}</Box>
+      </Stack>
+      <SidebarHelp />
     </>
-  )
-}
+  );
+};
 
-export default SidebarContent
+export default SidebarContent;

@@ -9,7 +9,6 @@ import SidebarContent from "./SidebarContent";
 // FUNCTIONS
 
 function Sidebar(props) {
-  // to check for active links and opened collapses
   const mainPanel = React.useRef();
   let variantChange = "0.2s linear";
 

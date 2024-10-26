@@ -44,6 +44,16 @@ export default function HeaderLinks(props) {
     mainText = "white";
   }
   const settingsRef = React.useRef();
+
+  // Filter routes
+  const filteredRoutes = routes.filter(route => 
+    ["/dashboard", "/tables", "/chatbot"].includes(route.path)
+  );
+
+  const accountRoutes = routes.find(route => route.category === "account").views.filter(view => 
+    ["/profile", "/logout"].includes(view.path)
+  );
+
   return (
     <Flex
       pe={{ sm: "0px", md: "16px" }}
@@ -51,17 +61,12 @@ export default function HeaderLinks(props) {
       alignItems="center"
       flexDirection="row"
     >
-     
-       
-   
       <SidebarResponsive
         logoText={props.logoText}
         secondary={props.secondary}
-        routes={routes}
-        // logo={logo}
+        routes={[...filteredRoutes, ...accountRoutes]}
         {...rest}
       />
-   
       <Menu>
         <MenuButton>
           <BellIcon color={navbarIcon} w="18px" h="18px" />
