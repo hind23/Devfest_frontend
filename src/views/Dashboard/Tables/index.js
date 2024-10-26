@@ -8,6 +8,9 @@ import { Button } from "@chakra-ui/react";
 import pieChart from "assets/svg/pieChart.svg";
 
 function Tables() {
+  const expenses = [
+    { title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },{ title: "Office Rent", amount: "340,000 DZD", category: "Operational Expense", date: "2024-09-01" },
+  ];
   return (
     <Flex direction='column'  pt={{ base: "120px", md: "75px" }}>
      <Flex flexDirection={"row"} >
@@ -23,253 +26,34 @@ function Tables() {
           chart={<LineChart />}
         />
       </Flex>
-      <Box w={"100%"} marginTop={"50px"} py={"8px"} bgColor={"white"}>
-  <Flex p={"10px"} rounded={"lg"}  flexDirection={"row"} alignItems={"center"} w={"100%"} justifyContent={"space-between"}>
-    <Heading>
-      Expense type
-    </Heading>
-    
-    <Flex flexDirection={"row"} flex={1} justifyContent={"flex-end"}>
-      <Button fontSize={"13px"} color={"white"} rounded={"full"} w={"150px"} bgColor={"#4FD1C5"} marginRight={"10px"}>
-        Filter
-      </Button>
-      <Button fontSize={"13px"} color={"white"} rounded={"full"} w={"150px"} bgColor={"#4FD1C5"}>
-        Add
-      </Button>
-    </Flex>
-    <Flex>
-    {/* A0AEC0 */}
+      <Box w="100%" mt="50px" py="8px" bg="white">
+      {/* Header Section */}
+      <Flex p="10px" rounded="lg" flexDirection="row" alignItems="center" w="100%" justifyContent="space-between">
+        <Heading size="md" color="#041039">Expense Type</Heading>
+        <Flex flexDirection="row" justifyContent="flex-end" gap="10px">
+          <Button fontSize="13px" color="white" rounded="full" w="150px" bgColor="#4FD1C5">Filter</Button>
+          <Button fontSize="13px" color="white" rounded="full" w="150px" bgColor="#4FD1C5">Add</Button>
+        </Flex>
+      </Flex>
 
-    </Flex>
+      {/* Table Headers */}
+      <Flex fontWeight="bold" color="#A0AEC0" py="4" px="10" borderBottom="1px solid #E2E8F0" alignItems="center" justifyContent="space-between">
+        <Text w="30%">Title</Text>
+        <Text w="20%">Amount</Text>
+        <Text w="30%">Category</Text>
+        <Text w="20%">Date</Text>
+      </Flex>
 
-  </Flex>
-  <Text color="#A0AEC0">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-
-
-</Text>
-
-<Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-
-
-</Text>
-
-
-
-<Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-
-
-</Text><Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-
-
-</Text>
-<Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-
-
-</Text>
-<Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text>
-<Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text>
-<Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text>
-<Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text><Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text><Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text><Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text><Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text><Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text><Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text><Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text><Text color="#041039">
-  <Flex  fontWeight={"bold"} w={"80%"} justifyContent={"space-between"}>
-<Text w={"50%"}>
-Title
- </Text> <Text >
-Amount
- </Text> <Text >
-Category
- </Text> <Text >
-Date
- </Text> 
-</Flex>
-</Text>
-</Box>
+      {/* Table Rows */}
+      {expenses.map((expense, index) => (
+        <Flex key={index} color="#041039" py="4" px="10" borderBottom="1px solid #E2E8F0" alignItems="center" justifyContent="space-between">
+          <Text w="30%">{expense.title}</Text>
+          <Text w="20%">{expense.amount}</Text>
+          <Text w="30%">{expense.category}</Text>
+          <Text w="20%">{expense.date}</Text>
+        </Flex>
+      ))}
+    </Box>
     </Flex>
   );
 }

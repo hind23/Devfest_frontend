@@ -1,95 +1,65 @@
 // Chakra imports
-import { Box, Flex, Grid, Icon } from "@chakra-ui/react";
-// Assets
-import BackgroundCard1 from "assets/img/BackgroundCard1.png";
-import { MastercardIcon, VisaIcon } from "components/Icons/Icons";
-import React from "react";
-import { FaPaypal, FaWallet } from "react-icons/fa";
-import { RiMastercardFill } from "react-icons/ri";
-import {
-  billingData,
-  invoicesData,
-  newestTransactions,
-  olderTransactions,
-} from "variables/general";
-import BillingInformation from "./components/BillingInformation";
-import CreditCard from "./components/CreditCard";
-import Invoices from "./components/Invoices";
-import PaymentMethod from "./components/PaymentMethod";
-import PaymentStatistics from "./components/PaymentStatistics";
-import Transactions from "./components/Transactions";
+import { Box,Image, Flex, Text, VStack, HStack, Button } from "@chakra-ui/react";
+
+
+import forcasting from "../../../assets/svg/forecasting.svg"
+import GraphOfTrends1 from "../../../assets/svg/GraphOfTrends1.svg"
 
 function Billing() {
   return (
-    <Flex direction='column' pt={{ base: "120px", md: "75px" }}>
-      <Grid templateColumns={{ sm: "1fr", lg: "2fr 1.2fr" }} templateRows='1fr'>
-        <Box>
-          <Grid
-            templateColumns={{
-              sm: "1fr",
-              md: "1fr 1fr",
-              xl: "1fr 1fr 1fr 1fr",
-            }}
-            templateRows={{ sm: "auto auto auto", md: "1fr auto", xl: "1fr" }}
-            gap='26px'>
-            <CreditCard
-              backgroundImage={BackgroundCard1}
-              title={"FIN HEALTH"}
-              number={"7812 2139 0823 XXXX"}
-              validity={{
-                name: "VALID THRU",
-                data: "05/24",
-              }}
-              cvv={{
-                name: "CVV",
-                code: "09x",
-              }}
-              icon={
-                <Icon
-                  as={RiMastercardFill}
-                  w='48px'
-                  h='auto'
-                  color='gray.400'
-                />
-              }
-            />
-            <PaymentStatistics
-              icon={<Icon h={"24px"} w={"24px"} color='white' as={FaWallet} />}
-              title={"Salary"}
-              description={"Belong interactive"}
-              amount={2000}
-            />
-            <PaymentStatistics
-              icon={<Icon h={"24px"} w={"24px"} color='white' as={FaPaypal} />}
-              title={"Paypal"}
-              description={"Freelance Payment"}
-              amount={4550}
-            />
-          </Grid>
-          <PaymentMethod
-            title={"Payment Method"}
-            mastercard={{
-              icon: <MastercardIcon w='100%' h='100%' />,
-              number: "7812 2139 0823 XXXX",
-            }}
-            visa={{
-              icon: <VisaIcon w='100%' h='100%' />,
-              number: "7812 2139 0823 XXXX",
-            }}
-          />
+    <VStack spacing={6} p={10}>
+      {/* Top Row with Graphs */}
+      <HStack spacing={6} w="full">
+        <Box 
+          w="50%"
+          bg="white"
+          boxShadow="md"
+          borderRadius="lg"
+          p={6}
+        >
+
+          <Text fontSize="lg" fontWeight="bold" mb={4}>
+            Graph Of Trends
+          </Text>
+          <Image src={GraphOfTrends1} alt="Graph of Trends" />
+
         </Box>
-        <Invoices title={"Invoices"} data={invoicesData} />
-      </Grid>
-      <Grid templateColumns={{ sm: "1fr", lg: "1.6fr 1.2fr" }}>
-        <BillingInformation title={"Billing Information"} data={billingData} />
-        <Transactions
-          title={"Your Transactions"}
-          date={"23 - 30 March"}
-          newestTransactions={newestTransactions}
-          olderTransactions={olderTransactions}
-        />
-      </Grid>
-    </Flex>
+
+        {/* Forecasting Card */}
+        <Box
+          w="50%"
+          bg="white"
+          boxShadow="md"
+          borderRadius="lg"
+          mt={"40px"}
+          p={6}
+        >
+          <Flex justifyContent="space-between" alignItems="center" mb={4}>
+            <Text fontSize="lg" fontWeight="bold">
+              Forecasting
+            </Text>
+          </Flex>
+          <Text color="teal.500" mb={2}>Predictive values</Text>
+          <Image src={forcasting} alt="Forecasting" />
+        </Box>
+      </HStack>
+
+      {/* Recommendations Section */}
+      <Box w="full" bg="teal.400" borderRadius="lg" p={6} fontWeight={"semiBold"} color="#041039" mt={4}>
+        <Text fontSize="lg" fontWeight="bold" mb={4}>
+          Recommendations
+        </Text>
+        <Box bg="white" p={4} borderRadius="lg" >
+          <Text color="#041039" fontWeight={"semiBold"}>
+            The analysis shows a 20% increase in marketing and travel expenses over the past year. To optimize costs,
+            the company should consolidate software subscriptions to reduce IT expenses, shift marketing strategies to
+            digital channels for efficiency, and implement a strict travel approval policy. Predictive models indicate
+            a potential rise in marketing costs due to product launches, so reallocating resources to the most effective
+            channels is advised.
+          </Text>
+        </Box>
+      </Box>
+    </VStack>
   );
 }
 

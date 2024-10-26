@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import AuthNavbar from "components/Navbars/AuthNavbar";
 // Chakra imports
 import {
@@ -11,13 +10,14 @@ import {
   Heading,
   Input,
   Link,
-  InputGroup,
-  InputRightElement,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 // Assets
+import { NavLink } from "react-router-dom";
+
 import bgimage from "assets/svg/bgimage.svg";
+{/* <NavLink to="/auth/landing"> */}
 
 function SignIn() {
   // Chakra color mode
@@ -83,7 +83,8 @@ function SignIn() {
               <Link color={"#A0AEC0"} fontSize={'14px'} mt='8px' display='block'>
                 Forgot password?
               </Link>
-              <Button
+              <NavLink to="/admin/dashboard">
+              <Button onClick={() => {}}
                 fontSize='13px'
                 type='submit'
                 bg='teal.300'
@@ -100,6 +101,7 @@ function SignIn() {
                 }}>
                  log In
               </Button>
+              </NavLink>
             </FormControl>
             <Flex
               flexDirection='column'

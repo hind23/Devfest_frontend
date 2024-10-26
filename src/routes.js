@@ -1,8 +1,8 @@
-import { ReactComponent as LogOutIcon } from "../src/assets/svg/LogOut.svg";
-
+// import
 import Dashboard from "views/Dashboard/Dashboard";
 import Tables from "views/Dashboard/Tables";
 import Billing from "views/Dashboard/Billing";
+import Landing from "views/Auth/landing";
 import Profile from "views/Dashboard/Profile";
 import SignIn from "views/Auth/SignIn.js";
 import SignUp from "views/Auth/SignUp.js";
@@ -14,8 +14,9 @@ import {
   PersonIcon,
   DocumentIcon,
   RocketIcon,
+  SupportIcon,
 } from "components/Icons/Icons";
-import LogOut from "../src/assets/svg/LogOut.svg";
+
 var dashRoutes = [
   {
     path: "/dashboard",
@@ -50,6 +51,7 @@ var dashRoutes = [
     component: Billing,
     layout: "/admin",
   },
+
   {
     path: "/signin",
     name: "Log In",
@@ -83,17 +85,28 @@ var dashRoutes = [
         secondaryNavbar: true,
         component: SignUp,
         layout: "/auth",
-      },     
-      {
-        path: "/signin",
+      }, {
+        path: "/logout",
         name: "Log Out",
         rtlName: "لوحة القيادة",
         icon: <RocketIcon color="inherit" />,
         secondaryNavbar: true,
-        component: SignUp,
+        component: SignUp,  // This redirects to SignUp
+        layout: "/auth",
+      }
+,         
+      {
+        path: "/landing",
+        name: "Landing Page",
+        rtlName: "لوحة القيادة",
+        icon: <RocketIcon color="inherit" />,
+        secondaryNavbar: true,
+        component: Landing,
         layout: "/auth",
       }, 
 
+  
+    
     ],
   },
 ];

@@ -335,6 +335,7 @@ function SignUp() {
                 value={formValues.confirmPassword}
                 onChange={handleInputChange}
               />
+              <NavLink to="/admin/dashboard">
               <Button
                 onClick={previousStep}
                 bg="teal.300"
@@ -355,6 +356,7 @@ function SignUp() {
               >
                 Sign up
               </Button>
+              </NavLink>
             </FormControl>
           )}
                     <Text textAlign={"center"} color={"#A0AEC0"} fontWeight='500'>

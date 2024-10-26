@@ -20,7 +20,7 @@ import {
 import { Image } from "@chakra-ui/react";
 
 // Assets
-import bgimage from "assets/svg/bgimage.svg";
+import bgimage from "../../assets/svg/bgimage.svg";
 import first from "assets/svg/first.svg";
 import second from "assets/svg/second.svg";
 import third from "assets/svg/third.svg";
@@ -29,7 +29,6 @@ import feedbacks from "assets/svg/feedbacks.svg";
 import fourth from "assets/svg/fourth.svg";
 import {Footer2} from "components/Footer/Footer2";
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
-import bgImage from "assets/svg/bgImage.svg"
 function Landing() {
   const iconSize = useBreakpointValue({ base: "40px", md: "50px" });
   const testimonials = [

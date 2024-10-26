@@ -7,8 +7,7 @@ import {
   SimpleGrid,Divider ,Icon,
   useColorModeValue
 } from "@chakra-ui/react";
-
-// assets
+import { ChatBotMini } from "components/ChatBotMini";
 import LineChart from "components/Charts/LineChart";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import BarChart from "components/Charts/BarChart";
@@ -197,7 +196,7 @@ export default function Dashboard() {
       shadow="md"
       mb={"auto"}
        backgroundColor={"white"} boxShadow={"md"}>
-<Image  src={GraphOfTrends}/>
+<Image  src={GraphOfTrends} />
         </Box> 
 
         </Grid>
@@ -255,6 +254,7 @@ export default function Dashboard() {
       />
     </Box>
       </Grid>
+<ChatBotMini/>
     </Flex>
   );
 }
