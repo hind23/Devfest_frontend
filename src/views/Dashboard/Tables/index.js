@@ -6,6 +6,7 @@ import { Box ,Spacer,Text} from "@chakra-ui/react";
 import LineChart from "components/Charts/LineChart";
 import { Button } from "@chakra-ui/react";
 import pieChart from "assets/svg/pieChart.svg";
+import { ChatBotMini } from "components/ChatBotMini";
 
 function Tables() {
   const expenses = [
@@ -54,6 +55,7 @@ function Tables() {
         </Flex>
       ))}
     </Box>
+    <ChatBotMini/>
     </Flex>
   );
 }

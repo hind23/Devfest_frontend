@@ -6,6 +6,8 @@ import {
   SimpleGrid,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { ChatBotMini } from "components/ChatBotMini";
+
 // assets
 import peopleImage from "assets/img/people-image.png";
 import logoChakra from "assets/svg/logo-white.svg";
@@ -120,6 +122,7 @@ export default function Dashboard() {
           data={rtlTimelineData}
         />
       </Grid>
+      <ChatBotMini/>
     </Flex>
   );
 }

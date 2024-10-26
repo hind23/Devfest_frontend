@@ -10,7 +10,7 @@ ReactDOM.render(
   <HashRouter>
     <Switch>
       <Route path={`/auth`} component={AuthLayout} />
-      <Route path={`/admin`} component={AdminLayout} />
+      <Route path={`/Admin`} component={AdminLayout} />
       <Route path={`/landing`} component={Landing} />      
       <Redirect from={`/`} to="/auth/landing" />
     </Switch>

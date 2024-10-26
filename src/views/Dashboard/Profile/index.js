@@ -2,8 +2,11 @@
 import { Flex, Grid, useColorModeValue } from "@chakra-ui/react";
 import avatar4 from "assets/img/avatars/avatar4.png";
 import ProfileBgImage from "assets/img/ProfileBackground.png";
+import { ChatBotMini } from "components/ChatBotMini";
+
 import {
   Box,
+
   Button,
   Divider,
   FormControl,
@@ -108,6 +111,7 @@ function Profile() {
         {/* Save Button */}
       
       </Box>
+      <ChatBotMini/>
     </Flex>
   );
 }
