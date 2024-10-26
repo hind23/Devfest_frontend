@@ -33,14 +33,14 @@ export const ChatBotMini = () => {
       setMessages((prev) => [...prev, { text: inputValue, isUser: true }]);
       setInputValue('');
 
-      // try {
-      //   const response = await axios.post("http://localhost:5000/chatAssistant", { message: inputValue });
-      //   const botMessage = response.data.message;
-      //   setMessages((prev) => [...prev, { text: botMessage, isUser: false }]);
-      // } catch (error) {
-      //   console.error("Error communicating with the bot:", error);
-      //   setMessages((prev) => [...prev, { text: "There was an error. Please try again.", isUser: false }]);
-      // }
+      try {
+        const response = await axios.post("http://localhost:5000/chatAssistant", { message: inputValue });
+        const botMessage = response.data.message;
+        setMessages((prev) => [...prev, { text: botMessage, isUser: false }]);
+      } catch (error) {
+        console.error("Error communicating with the bot:", error);
+        setMessages((prev) => [...prev, { text: "There was an error. Please try again.", isUser: false }]);
+      }
     }
   };
 
