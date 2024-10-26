@@ -37,7 +37,7 @@ const SidebarContent = ({ logoText, routes }) => {
   const accountRoutes = routes
     .find((route) => route.category === "account")
     .views.filter((view) =>
-      ["/profile", "/logout"].includes(view.path)
+      ["/profile", "/signup"].includes(view.path)
     );
 
   const createLinks = (routes) => {
