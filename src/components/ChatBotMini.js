@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import {
   Box,
@@ -16,7 +17,7 @@ export const ChatBotMini = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [welcomeMessageSent, setWelcomeMessageSent] = useState(false); // New state to track welcome message
+  const [welcomeMessageSent, setWelcomeMessageSent] = useState(false);
 
   const toggleChatbot = () => {
     setIsOpen((prev) => !prev);
@@ -26,30 +27,30 @@ export const ChatBotMini = () => {
     setInputValue(e.target.value);
   };
 
-  const handleSendMessage = (e) => {
+  const handleSendMessage = async (e) => {
     e.preventDefault();
     if (inputValue.trim()) {
       setMessages((prev) => [...prev, { text: inputValue, isUser: true }]);
       setInputValue('');
 
-      // Simulate a bot response
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          { text: 'This is a bot response.', isUser: false },
-        ]);
-      }, 1000);
+      // try {
+      //   const response = await axios.post("http://localhost:5000/chatAssistant", { message: inputValue });
+      //   const botMessage = response.data.message;
+      //   setMessages((prev) => [...prev, { text: botMessage, isUser: false }]);
+      // } catch (error) {
+      //   console.error("Error communicating with the bot:", error);
+      //   setMessages((prev) => [...prev, { text: "There was an error. Please try again.", isUser: false }]);
+      // }
     }
   };
 
-  // Effect to add a welcome message when the chatbot opens
   useEffect(() => {
     if (isOpen && !welcomeMessageSent) {
       setMessages((prev) => [
         ...prev,
         { text: 'Welcome to our chat support! How can I assist you today?', isUser: false },
       ]);
-      setWelcomeMessageSent(true); // Set to true after sending the welcome message
+      setWelcomeMessageSent(true);
     }
   }, [isOpen, welcomeMessageSent]);
 
@@ -61,7 +62,7 @@ export const ChatBotMini = () => {
           src={MiniBot}
           onClick={toggleChatbot}
           aria-label={isOpen ? 'Close Chatbot' : 'Open Chatbot'}
-          cursor="pointer" // Adds a pointer cursor for better UX
+          cursor="pointer"
         />
         {isOpen && (
           <Box
@@ -72,12 +73,12 @@ export const ChatBotMini = () => {
             right="10px"
             top="10px"
             borderRadius="lg"
-            boxShadow="lg" // You can adjust the shadow size or use specific values
+            boxShadow="lg"
           >
             <Image
               src={Close}
-              onClick={toggleChatbot} // Toggles the chatbot when clicked
-              cursor="pointer" // Adds a pointer cursor for better UX
+              onClick={toggleChatbot}
+              cursor="pointer"
             />
           </Box>
         )}
@@ -91,7 +92,7 @@ export const ChatBotMini = () => {
             height="80vh"
             display="flex"
             flexDirection="column"
-            mt={2} // Add some margin to the top for better spacing
+            mt={2}
           >
             <Box flex="1" overflowY="auto" p={4}>
               <VStack spacing={2} align="stretch">
