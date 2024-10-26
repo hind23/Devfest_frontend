@@ -1,7 +1,7 @@
 // Chakra imports
 import { Box,Image, Flex, Text, VStack, HStack, Button } from "@chakra-ui/react";
 
-
+import { ChatBotMini } from "components/ChatBotMini";
 import forcasting from "../../../assets/svg/forecasting.svg"
 import GraphOfTrends1 from "../../../assets/svg/GraphOfTrends1.svg"
 
@@ -59,6 +59,7 @@ function Billing() {
           </Text>
         </Box>
       </Box>
+      <ChatBotMini/>
     </VStack>
   );
 }

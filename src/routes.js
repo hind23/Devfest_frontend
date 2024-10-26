@@ -6,6 +6,9 @@ import Landing from "views/Auth/landing";
 import Profile from "views/Dashboard/Profile";
 import SignIn from "views/Auth/SignIn.js";
 import SignUp from "views/Auth/SignUp.js";
+import { MdLogout } from 'react-icons/md'; 
+import logOut from "./assets/svg/Vector.svg";
+import { Image } from "@chakra-ui/react";
 import  {ChatBot}  from "views/Dashboard/Chatbot.js";
 import {
   HomeIcon,
@@ -24,7 +27,7 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: <HomeIcon color="inherit" />,
     component: Dashboard,
-    layout: "/admin",
+    layout: "/Admin",
   },
   {
     path: "/chatbot",
@@ -33,7 +36,7 @@ var dashRoutes = [
     icon: <RocketIcon color="inherit" />,
     secondaryNavbar: true,
     component: ChatBot,
-    layout: "/admin",
+    layout: "/Admin",
   },
   {
     path: "/tables",
@@ -41,7 +44,7 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: <StatsIcon color="inherit" />,
     component: Tables,
-    layout: "/admin",
+    layout: "/Admin",
   },
   {
     path: "/billing",
@@ -49,7 +52,7 @@ var dashRoutes = [
     rtlName: "لوحة القيادة",
     icon: <CreditIcon color="inherit" />,
     component: Billing,
-    layout: "/admin",
+    layout: "/Admin",
   },
 
   {
@@ -73,7 +76,7 @@ var dashRoutes = [
         icon: <PersonIcon color="inherit" />,
         secondaryNavbar: true,
         component: Profile,
-        layout: "/admin",
+        layout: "/Admin",
       },
   
     
@@ -89,9 +92,9 @@ var dashRoutes = [
         path: "/logout",
         name: "Log Out",
         rtlName: "لوحة القيادة",
-        icon: <RocketIcon color="inherit" />,
+        icon: <Image src={logOut} alt="CSV Icon" />,
         secondaryNavbar: true,
-        component: SignUp,  // This redirects to SignUp
+        component: SignIn,  // This redirects to SignUp
         layout: "/auth",
       }
 ,         
@@ -99,8 +102,7 @@ var dashRoutes = [
         path: "/landing",
         name: "Landing Page",
         rtlName: "لوحة القيادة",
-        icon: <RocketIcon color="inherit" />,
-        secondaryNavbar: true,
+        icon: <Image src={logOut} alt="CSV Icon" width="20px" height="20px" />,
         component: Landing,
         layout: "/auth",
       }, 

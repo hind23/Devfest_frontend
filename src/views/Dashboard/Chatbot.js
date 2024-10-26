@@ -10,42 +10,41 @@ import {
     List,
     ListItem,
     IconButton,
-Heading
+    Heading
   } from "@chakra-ui/react";
+  import { ChatBotMini } from "components/ChatBotMini";
+
   import { FaPaperPlane, FaPaperclip, FaTimesCircle } from "react-icons/fa";
   import { useState, useRef } from "react";
-  import ChatBotImg from "../../assets/svg/BBT.svg"; // Ensure this path is correct
-import Header from "./Profile/components/Header";
+  import ChatBotImg from "../../assets/svg/BBT.svg"; 
   
   export const ChatBot = () => {
-    const [selectedFiles, setSelectedFiles] = useState([]); // State to store selected files
-    const [messages, setMessages] = useState([]); // State to store chat messages
+    const [selectedFiles, setSelectedFiles] = useState([]); 
+    const [messages, setMessages] = useState([]);
     const fileInputRef = useRef(null);
-    const [isExpanded, setIsExpanded] = useState(false); // Track if the input area is expanded
-    const [visible,setVisible]=useState(true);
-    // Function to simulate backend response for now
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [visible, setVisible] = useState(true);
+  
     const getResponse = (question) => {
-      // You could replace this with dynamic responses later
-      return `Response forResponse forResponse forResponse forResponse forResponse forResponse forResponse forResponse for "${question}"`;
+      return `Response for "${question}"`;
     };
   
     const handleAskChatBot = () => {
-        setVisible(false);
+      setVisible(false);
       const inputField = document.getElementById("chat-input");
-      const question = inputField.value; 
+      const question = inputField.value;
   
       if (question) {
-        // Render question in the messages array
         setMessages((prevMessages) => [...prevMessages, { text: question, sender: "user" }]);
-        inputField.value = ""; // Clear the input field
+        inputField.value = ""; 
   
         setTimeout(() => {
           const answer = getResponse(question);
           setMessages((prevMessages) => [...prevMessages, { text: answer, sender: "bot" }]);
-        }, 800); // Delay to simulate response time
+        }, 800); 
       }
   
-      setIsExpanded(true); // Set expanded state to true
+      setIsExpanded(true); 
     };
   
     const handleAttachFiles = () => {
@@ -83,15 +82,16 @@ import Header from "./Profile/components/Header";
                 variant="outline"
                 px={4}
                 py={4}
-                display={visible?"block":"none"}
+                display={visible ? "block" : "none"}
                 onClick={() => handleAskChatBot("What is our current cash flow?")}
               >
                 What is our current cash flow?
               </Button>
             ))}
           </HStack>
-
-          <Box minH={"fit-content"}
+  
+          <Box
+            minH={"fit-content"}
             position={isExpanded ? "absolute" : "relative"}
             bottom={isExpanded ? "10px" : ""}
             w={isExpanded ? "80%" : "100%"}
@@ -102,41 +102,39 @@ import Header from "./Profile/components/Header";
                 <FaPaperclip />
               </Button>
               <Input
-  mt={"40px"}
- 
-  id="chat-input"
-  variant="outline"
-  placeholder="Type a message..."
- 
-  onKeyDown={(e) => {
-    if (e.key === "Enter") {
-      handleAskChatBot();
-    }
-  }}
-/>
-
+                mt={"40px"}
+                id="chat-input"
+                variant="outline"
+                placeholder="Type a message..."
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleAskChatBot();
+                  }
+                }}
+              />
+  
               <Button onClick={handleAskChatBot} backgroundColor={"#4FD1C5"} colorScheme="teal" size="lg">
                 <FaPaperPlane />
               </Button>
             </HStack>
           </Box>
   
-          {/* Messages display area */}
-          <Box w="full" mt={4} >
+          <Box w="50vw" mt={4} display="flex" flexDirection="column" alignItems="flex-end">
             {messages.map((message, index) => (
               <Box
                 key={index}
-                textAlign={message.sender === "user" ? "left" : "right"}
+                textAlign="right" 
                 mb={2}
                 p={2}
-                borderBottomRightRadius={message.sender === "user" ? "0" : "md"}
+                borderBottomRightRadius="0" 
                 borderRadius="md"
                 bg={message.sender === "user" ? "gray.100" : "teal.100"}
-                maxW={"100%"}
-                alignSelf={message.sender === "user" ? "flex-start" : "flex-end"}
+                w={"fit-content"}
+                display="flex"
+                flexDirection="column"
               >
                 <Heading mb={"10px"} fontSize={"20px"}>
-                    {message.sender === "user" ? "You" : "Chatbot"}
+                  {message.sender === "user" ? "You" : "Chatbot"}
                 </Heading>
                 <Text>{message.text}</Text>
               </Box>
@@ -174,7 +172,7 @@ import Header from "./Profile/components/Header";
             multiple
           />
         </VStack>
+        <ChatBotMini/>
       </Container>
     );
   };
-   

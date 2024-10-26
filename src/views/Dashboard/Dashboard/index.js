@@ -3,15 +3,18 @@ import {
   Flex,
   Grid,
   Image,
-  Box,Text,
+  Box,Text,Select,
   SimpleGrid,Divider ,Icon,
   useColorModeValue
 } from "@chakra-ui/react";
+import Card from "components/Card/Card.js";
+
 import { ChatBotMini } from "components/ChatBotMini";
 import LineChart from "components/Charts/LineChart";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import BarChart from "components/Charts/BarChart";
 import cashFlow from "assets/svg/CashFlow.svg"
+import cashFlow2 from "assets/svg/Graph1.svg"
 import expenses from "assets/svg/expanses.svg"
 import revenue from "assets/svg/revenue.svg"
 import profits from "assets/svg/profits.svg"
@@ -28,6 +31,7 @@ import MiniStatistics from "./components/MiniStatistics";
 import SalesOverview from "./components/SalesOverview";
 import GraphOfTrends from "../../../assets/svg/GraphOfTrends.svg";
 const TransactionItem = ({ title, date, amount, color, icon }) => (
+ 
   <Flex justifyContent="space-between" alignItems="center" mb={3}>
     <Flex alignItems="center">
       <Icon as={icon} color={color} boxSize={4} mr={2} />
@@ -40,6 +44,9 @@ const TransactionItem = ({ title, date, amount, color, icon }) => (
   </Flex>
 );
 export default function Dashboard() {
+  const handleSelectChange = (event) => {
+    console.log("Selected value:", event.target.value);
+  };
   const getProfits=()=>
     {
       return 2400 ;
@@ -93,11 +100,49 @@ export default function Dashboard() {
         templateRows={{ sm: "repeat(2, 1fr)", lg: "1fr" }}
         gap='24px'
         mb={{ lg: "26px" }}>
-        <ActiveUsers
-          title={"Active Users"}
-          percentage={5}
-          chart={<BarChart />}
-        />
+        <Card p='16px'>
+        <Flex justifyContent={"space-between"}>
+        <Select
+          fontSize="sm"
+          ms="4px"
+          mb="24px"
+          size="lg"
+          w={"250px"}
+          borderRadius="5px"
+          color="black"
+          name="cashFlow"
+          fontWeight={"bold"}
+          defaultValue={""}
+          onChange={handleSelectChange} // Updated to use a handler
+        >
+          <option value="" disabled>
+            Cash flow (revenue)
+          </option>
+          <option value="Technology/Software">Cash flow (expense)</option>
+        </Select>
+        <Select
+          fontSize="sm"
+          ms="4px"
+          mb="24px"
+          size="lg"
+          borderRadius="5px"
+          color="black"
+          name="timePeriod"
+          w={"150px"}
+          defaultValue={""}
+          onChange={handleSelectChange} // Updated to use a handler
+        >
+          <option value="" disabled>
+            Time periods
+          </option>
+          <option value="Daily">Daily</option>
+          <option value="Monthly">Monthly</option>
+          <option value="Yearly">Yearly</option>
+        </Select>
+      </Flex>
+      <Image  src={cashFlow2} alt="Cash Flow" mr="8px" />
+
+</Card>
         <SalesOverview
           title={"Profits Overview"}
           percentage={5}
